@@ -1,12 +1,7 @@
-const express = require('express');
+const customExpress = require('./configuracao/customExpress')
 
-const app = express();
+const app = customExpress();
 
 app.listen(3000, () => {
     console.log("Aplicação iniciada")
-})
-
-
-app.get("/", (req, res) => {
-     res.send("Aplicação rodando...");
 })
