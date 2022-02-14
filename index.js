@@ -1,7 +1,14 @@
-const customExpress = require('./configuracao/customExpress')
+const customExpress = require('./configuracao/customExpress');
+const conexao = require('./infraestrutura/conexao');
 
-const app = customExpress();
-
-app.listen(3000, () => {
-    console.log("Aplicação iniciada")
+conexao.connect(error => {
+    if(error) {
+        console.log(error);
+    } else {
+        console.log("CONECTADO COM SUCESSO AO BANCO DE DADOS PET!.")
+        const app = customExpress();
+        app.listen(3000, () => {
+            console.log("Aplicação iniciada")
+        })
+    }
 })
